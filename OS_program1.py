@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import QPainter, QColor, QBrush, QPen
 
-# 配置
+# 配置123
 MAX_FLOOR = 20
 ELEVATOR_NUM = 5
 
