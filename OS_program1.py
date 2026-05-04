@@ -92,7 +92,7 @@ class DigitalFloorDisplay(QWidget):
         painter.setBrush(QBrush(color))
         painter.drawRect(x + sw, y + (h//2) - (sw//2), w - 2*sw, sw)
 
-# --- 电梯门动画（保留） ---
+# --- 电梯门动画 ---
 class DoorAnimation(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
