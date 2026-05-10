@@ -9,12 +9,13 @@ MAX_FLOOR = 20    # 最大楼层数
 ELEVATOR_NUM = 5   # 电梯数量
 
 # ====================== 电梯状态常量 ======================
-STOP = 0       # 静止待机：进程处于就绪态
-UP = 1         # 上行运行：进程处于运行态（上升）
-DOWN = 2       # 下行运行：进程处于运行态（下降）
-OPEN = 3       # 门开状态：进程处于阻塞态，等待开门操作完成
-MANUAL_OPEN = 4# 手动开门状态：进程处于用户干预阻塞态，等待用户手动关门
-ALARM = 5      # 报警锁定状态：进程处于中断处理态，优先响应报警中断
+STOP = 0       # 静止待机：就绪态
+UP = 1         # 上行运行：运行态（上升）
+DOWN = 2       # 下行运行：运行态（下降）
+OPEN = 3       # 门开状态：阻塞态，等待开门操作完成
+MANUAL_OPEN = 4# 手动开门状态：用户干预阻塞态，等待用户手动关门
+ALARM = 5      # 报警锁定状态：中断处理态，优先响应报警中断
+
 
 # --- 七段数码管类，用于显示电梯当前楼层 ---
 class DigitalFloorDisplay(QWidget):
@@ -145,19 +146,19 @@ class DoorAnimation(QWidget):
             p.setPen(pen)
             p.drawLine(w//2, 0, w//2, h)
 
-# ====================== 电梯类：继承QThread，模拟系统中的一个独立进程 ======================
+# ====================== 电梯类：继承QThread ======================
 class Elevator(QThread):
-    # 信号量：模拟进程间通信机制，用于与父进程通信
+    # 信号量：模拟进程间通信机制
     update_ui = pyqtSignal(int, int)  # 信号：通知UI线程刷新显示
     sig_open_door = pyqtSignal(int)   # 信号：发送开门请求
     sig_close_door = pyqtSignal(int)  # 信号：发送关门请求
 
     def __init__(self, eid):
         super().__init__()
-        # ====================== 进程控制块（PCB） ======================
+        # ====================== PCB ======================
         self.id = eid          # 进程ID（PID）
-        self.floor = 1         # 当前楼层（程序计数器PC）
-        self.state = STOP      # 进程状态：state
+        self.floor = 1         # 当前楼层
+        self.state = STOP      # 状态：state
         self.alarm = False     # 中断标志位：是否响应报警中断
         self.door_processing = False  # 互斥锁（Mutex）：保护开门临界区
         
@@ -169,7 +170,7 @@ class Elevator(QThread):
     # 添加内部任务到就绪队列
     def add_internal_task(self, floor):
         if 1 <= floor <= MAX_FLOOR:
-            self.internal_tasks.add(floor)  # 加入高优先级就绪队列，set去重避免重复PCB
+            self.internal_tasks.add(floor)  # 加入高优先级就绪队列
 
     # 添加外部任务到就绪队列
     def add_external_task(self, floor, direction):
