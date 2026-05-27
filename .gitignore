@@ -1,3 +1,4 @@
-.git/
-.vscode/
-.ignore
+.git
+.vscode
+.claude
+.gitignore

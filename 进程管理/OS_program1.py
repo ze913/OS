@@ -2,6 +2,7 @@ import sys
 import time
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
+from PyQt5.QtCore import pyqtProperty
 from PyQt5.QtGui import QPainter, QColor, QBrush, QPen
 
 # ====================== 系统资源配置 ======================
