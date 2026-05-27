@@ -22,7 +22,8 @@
 
 ### 项目预览
 
-![image-20260527204319536](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20260527204319536.png)
+<img width="865" height="559" alt="image" src="https://github.com/user-attachments/assets/1bd26389-0c71-4ebb-868a-da04c296034e" />
+
 
 ## 内存管理项目之请求调页
 
@@ -55,4 +56,5 @@
 
 ### 项目预览
 
-![image-20260527204428938](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20260527204428938.png)
+<img width="972" height="541" alt="image" src="https://github.com/user-attachments/assets/0ac35581-bd26-40dc-b600-bf1b482f2f5a" />
+
